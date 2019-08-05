@@ -19,6 +19,7 @@ class Model():
     def response_on_topic(self,sentence):
         topics=recognize_topics(sentence)
         #print(topics)
+        self.news.add_topic(topics)
         return self.generate_content(self.select_topic(topics))
 
 

@@ -28,7 +28,7 @@ def solve_code_error(input_dict):
 
 
 class News():
-    topic_stack={'France':1}
+    topic_stack={'France':1,'':'default information'}
     topic_content={}
     max_topic=10
 
@@ -37,7 +37,7 @@ class News():
 
 
     def write_default_news(self):
-        for topic in topic_stack:
+        for topic in self.topic_stack:
             try:
                 #print(json.dumps(newsapi.get_everything(q='France'),ensure_ascii=False))
                 self.topic_content[topic]=newsapi.get_everything(q=topic)
@@ -54,11 +54,16 @@ class News():
             self.topic_content=pickle.load(file)
 
 
-    def add_topic(self,new_topics={}):
+    def add_topic(self,new_topics_list):
+        print(new_topics_list)
+        new_topics={}
+        for topic in new_topics_list:
+            new_topics[topic]=newsapi.get_everything(q=topic)
         for new_topic_name in new_topics:
-            if self.topic_content.len()>max_topic:
+            if len(self.topic_content)>self.max_topic:
                 self._forget_topic()
-            topic_stack[new_topic_name]=new_topics[new_topic_name]
+            self.topic_stack[new_topic_name]=new_topics[new_topic_name]
+        print(self.topic_stack)
 
 
     def _forget_topic(self):
