@@ -29,10 +29,17 @@ def solve_code_error(input_dict):
                 value=value
 
 
+def generate_content(topic):
+
+
+
 class News():    
     def __init__(self):
         pass
 
+
+    def __init__(self,topic_list):
+        pass
 
     def write_default_news(self):
         for topic in topic_stack:
