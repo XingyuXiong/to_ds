@@ -11,11 +11,11 @@ def recognize_topics(sentence):
     return use_nltk(sentence)
 
 
-def use_stanford():
+def use_stanford(sentence):
     nlp=StanfordCoreNLP()
     print(nlp.ner(test_sentence))
 
 
 def use_nltk(sentence):
     ner_frame=ner(sentence)
-    return ner_frame['Entity Name'].values
+    return ner_frame['Entity Name'].values    
