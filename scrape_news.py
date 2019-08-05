@@ -30,7 +30,7 @@ def solve_code_error(input_dict):
 
 
 def generate_content(topic):
-
+    pass
 
 
 class News():    

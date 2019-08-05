@@ -1,20 +1,21 @@
 #
+import pandas as pd
 from stanfordcorenlp import StanfordCoreNLP
+from nltk_ner import ner
 
 
 test_sentence='I love Beijing'
-nlp=StanfordCoreNLP()
-print(nlp.ner(test_sentence))
 
 
 def recognize_topics(sentence):
-    pass
+    return use_nltk(sentence)
 
 
-def stanford_ner():
-    pass
+def use_stanford():
+    nlp=StanfordCoreNLP()
+    print(nlp.ner(test_sentence))
 
 
-
-def nltk_ner():
-    pass
+def use_nltk(sentence):
+    ner_frame=ner(sentence)
+    return ner_frame['Entity Name'].values
