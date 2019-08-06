@@ -1,0 +1,5 @@
+pandas==0.24.2
+stanfordcorenlp==3.9.1.1
+nltk==3.4.4
+newsapi_python==0.2.5
+newsapi==0.1.1

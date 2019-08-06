@@ -1,12 +1,24 @@
 # -*- coding:gbk -*-
 
-from newsapi import NewsApiClient
 import pickle
 import json
 import sys
+import os
 import io
 
+try:
+    from newsapi import NewsApiClient
+except ImportError: 
+    from newsapi.newsapi_client import NewsApiClient
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+sys_type=os.name
+work_dir=os.path.abspath(os.path.dirname(sys.argv[0]))
+if sys_type=='nt':
+    work_dir=work_dir+'\\'
+elif sys_type=='posix':
+    work_dir=work_dir+'/'
 
 global null
 null=''
@@ -45,12 +57,12 @@ class News():
                 pass
             else:
                 break
-        with open('pickle_topic_content','wb') as file:
+        with open(work_dir+'pickle_topic_content','wb') as file:
             pickle.dump(self.topic_content,file)
 
 
     def read_default_news(self):
-        with open('pickle_topic_content','rb') as file:
+        with open(work_dir+'pickle_topic_content','rb') as file:
             self.topic_content=pickle.load(file)
 
 
